@@ -70,8 +70,7 @@ public class TableViewPaneController implements Initializable {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection =
                DriverManager.
-                getConnection("jdbc:mysql://127.0.0.1:3306/company?serverTimezone=UTC",
-                        "root", "root");
+                getConnection("jdbc:mysql://127.0.0.1:3306/company?serverTimezone=UTC","root","");
             this.statement = connection.createStatement();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -110,7 +109,15 @@ public class TableViewPaneController implements Initializable {
     }
 
     @FXML
-    private void buttonDeleteHandle(ActionEvent event) {
+    private void buttonDeleteHandle(ActionEvent event) throws Exception{
+        
+        Integer id = Integer.parseInt(txtFieldID.getText());
+        String sql = "Delete From Employee Where id = "+id;
+        this.statement.executeUpdate(sql);
+       txtFieldID.setText("");
+        txtFieldName.setText("");
+        txtFieldDepartment.setText("");
+        txtFieldSalary.setText("");
     }
 
     @FXML
