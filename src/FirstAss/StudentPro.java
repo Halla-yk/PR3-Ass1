@@ -35,7 +35,7 @@ public class StudentPro {
         for(Student s : std){
             System.out.println(s);
     }
-        PrintWriter output = new PrintWriter(new File("src/StudentPro/std.data"));
+        PrintWriter output = new PrintWriter(new File("src/FirstAss/std.data"));
         for(Student s : std){
             output.println(s);
         }
